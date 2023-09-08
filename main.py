@@ -11,7 +11,7 @@ data = pd.read_excel('CRA_train_1200.xlsx')
 # ...
 
 # Разделение данных на обучающую и тестовую выборки
-X_train, X_test, y_train, y_test = train_test_split(data['text'], data['rating'], test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(data['pr_txt'], data['Категория'], test_size=0.2)
 
 # Векторизация текста
 vectorizer = CountVectorizer()
