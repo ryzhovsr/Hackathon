@@ -5,7 +5,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
 # Загрузка данных
-data = pd.read_csv('data.csv')
+data = pd.read_excel('CRA_train_1200.xlsx')
 
 # Предобработка данных
 # ...
