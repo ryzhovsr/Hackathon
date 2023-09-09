@@ -40,6 +40,7 @@ def seed_all(seed_value):
         torch.backends.cudnn.benchmark = True
         torch.backends.cudnn.deterministic = False
 
+
 train_df = pd.read_excel('CRA_train_1200.xlsx', engine='openpyxl', index_col=0)
 test_df = pd.read_excel('CRA_train_1200.xlsx', engine='openpyxl', index_col=0)
 
