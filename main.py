@@ -17,7 +17,7 @@ import accelerate
 
 var = transformers.__version__, accelerate.__version__
 
-train_df = pd.read_excel('/content/CRA_train_1200.xlsx', engine='openpyxl', index_col=0)
+train_df = pd.read_excel('Datasets\CRA_train_1200.xlsx', engine='openpyxl', index_col=0)
 
 train_text, test_text, train_labels, test_labels = train_test_split(train_df['pr_txt'].astype('str'),
                                                                     train_df['Категория'].astype('str'), test_size=0.1,
@@ -37,7 +37,7 @@ def seed_all(seed_value):
 
 seed_all(42)
 
-# Модель 'DeepPavlov/rubert-base-cased'  Внимание: 7 или 17 выбрать
+# Модель 'DeepPavlov/ruBert-base-cased'  Внимание: 7 или 17 выбрать
 model_name = 'DeepPavlov/rubert-base-cased'
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=7)  # 7!!!!
 tokenizer = BertTokenizer.from_pretrained(model_name)
@@ -92,7 +92,6 @@ test_dataset = Data(tokens_test, test_labels_encoded)
 
 
 # Расчет метрики - F1
-
 def compute_metrics(predict):
     labels = predict.label_ids
     preds = predict.predictions.argmax(-1)
@@ -117,7 +116,7 @@ training_args = TrainingArguments(
     save_total_limit=1,
     seed=42)
 
-# Передача в trainer предообученной модели, tokenizer, данных для обучения, для валидации и способа расчета метрики
+# Передача в trainer пред обученной модели, tokenizer, данных для обучения, для валидации и способа расчета метрики
 trainer = Trainer(model=model,
                   tokenizer=tokenizer,
                   args=training_args,
